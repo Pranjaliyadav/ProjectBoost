@@ -8,7 +8,10 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float LoadDelayTime = 0.5f;
     [SerializeField] AudioClip success;
     [SerializeField] AudioClip crash;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem crashParticles;
     AudioSource audioSource;
+    bool isTransitioning = false;
 
 
     void Start() {
@@ -21,7 +24,10 @@ public class CollisionHandler : MonoBehaviour
     
     void OnCollisionEnter(Collision other) {
 
-        switch(other.gameObject.tag){
+        if(isTransitioning){return;}
+        
+        else {
+            switch(other.gameObject.tag){
 
                 case "Friendly":
                         Debug.Log("This is a friendly place!");
@@ -34,11 +40,15 @@ public class CollisionHandler : MonoBehaviour
                         break;
 
         }
+        }
         
     }
 
     void StartCrashSequence(){
 
+        crashParticles.Play(); 
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(crash);
         movement.enabled = false;
         Invoke("ReloadLevel", LoadDelayTime);     //dont use ReloadLevel()  only name is needed not the brackets
@@ -48,6 +58,9 @@ public class CollisionHandler : MonoBehaviour
 
     void StartWinSequence(){
 
+        successParticles.Play();
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(success);
         movement.enabled = false;
         Invoke("LoadNextLevel" , LoadDelayTime);

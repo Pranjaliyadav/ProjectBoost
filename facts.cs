@@ -11,6 +11,13 @@ File>Build Settings>add scenes or drag them from scenes folder.starts at 0
 using Invoke() allows us to call a method so it executes a delay of x seconds
 Syntax : Invoke("MethodName",delayInSeconds);
 
+particle system is a game object component
+theres an emitter
+Pink particles are default when particle is not provided
+we use Modules for controlling behaviour
+make sure looping and play on awake is turned off in particle system
+
+
 
 
 
