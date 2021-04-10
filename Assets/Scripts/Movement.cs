@@ -7,8 +7,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float mainThrust = 100f;
-    [SerializeField] float rotationThrust = 100f;
+    [SerializeField] float mainThrust = 100f;     //a parameter
+    [SerializeField] float rotationThrust = 100f;   //cache - references for readability or speed
+    [SerializeField] AudioClip mainEngine;    //state - private instance (member) variable
     Rigidbody rb;
 
     AudioSource audioSource;
@@ -37,7 +38,9 @@ public class Movement : MonoBehaviour
             //rb.AddRelativeForce(Vector3.up);                  //another way to write rb.AddRelativeForce(0,1,0);
             rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);    //Time.deltaTime to make the thrust fps independent
             if(!audioSource.isPlaying){                 //if audio is not playing then play it    
-                audioSource.Play();                  //else is  not here as the sound has to stop when we're not thrusting so its outside 
+                audioSource.PlayOneShot(mainEngine);        //else is  not here as the sound has to stop when we're not thrusting so its outside 
+                //PlayOneshot can play any audio u give as it takes a parameter. Play() doesnt take parameter so not a good choice as we need 
+                //to specify which audio we're playing
             }
         
         }

@@ -407,10 +407,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2084347205234494549, guid: 19378883d0ba728429a5df94fa8aed39, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 67f0f81734c496849bf173e58b27d027, type: 2}
     - target: {fileID: 2084347205234494551, guid: 19378883d0ba728429a5df94fa8aed39, type: 3}
       propertyPath: m_Name
       value: Obstacle
@@ -471,10 +467,6 @@ PrefabInstance:
     - target: {fileID: 2252791257397757462, guid: 5838dc273d19d9e45a3bc8afcc5eeef8, type: 3}
       propertyPath: m_Name
       value: LaunchPad
-      objectReference: {fileID: 0}
-    - target: {fileID: 2252791257397757462, guid: 5838dc273d19d9e45a3bc8afcc5eeef8, type: 3}
-      propertyPath: m_TagString
-      value: Friendly
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5838dc273d19d9e45a3bc8afcc5eeef8, type: 3}
@@ -602,10 +594,6 @@ PrefabInstance:
     - target: {fileID: 3716511136379728287, guid: 31385244b264ca241a7535d44c9be093, type: 3}
       propertyPath: m_Name
       value: LandingPad
-      objectReference: {fileID: 0}
-    - target: {fileID: 3716511136379728287, guid: 31385244b264ca241a7535d44c9be093, type: 3}
-      propertyPath: m_TagString
-      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 3716511136379728291, guid: 31385244b264ca241a7535d44c9be093, type: 3}
       propertyPath: m_RootOrder

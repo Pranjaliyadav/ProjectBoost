@@ -1,8 +1,24 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
-{
+{      
+    Movement movement;
+    [SerializeField] float LoadDelayTime = 0.5f;
+    [SerializeField] AudioClip success;
+    [SerializeField] AudioClip crash;
+    AudioSource audioSource;
+
+
+    void Start() {
+        
+        movement = GetComponent<Movement>();
+        audioSource = GetComponent<AudioSource>();
+
+
+    }
+    
     void OnCollisionEnter(Collision other) {
 
         switch(other.gameObject.tag){
@@ -11,13 +27,30 @@ public class CollisionHandler : MonoBehaviour
                         Debug.Log("This is a friendly place!");
                         break;
                 case "Finish":
-                        LoadNextLevel();
+                        StartWinSequence();
                         break;
                 default:
-                        ReloadLevel();
+                        StartCrashSequence();          
                         break;
 
         }
+        
+    }
+
+    void StartCrashSequence(){
+
+        audioSource.PlayOneShot(crash);
+        movement.enabled = false;
+        Invoke("ReloadLevel", LoadDelayTime);     //dont use ReloadLevel()  only name is needed not the brackets
+                                        //delay the function , wait for 1 sec to execute this function
+
+    }
+
+    void StartWinSequence(){
+
+        audioSource.PlayOneShot(success);
+        movement.enabled = false;
+        Invoke("LoadNextLevel" , LoadDelayTime);
         
     }
 
