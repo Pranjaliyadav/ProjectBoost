@@ -10,11 +10,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 100f;
     [SerializeField] float rotationThrust = 100f;
     Rigidbody rb;
+
+    AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,8 +35,15 @@ public class Movement : MonoBehaviour
             //rb.AddRelativeForce(Vector3);                    //Vector3 cuz it takes account of speed and the direction object's going
             //rb.AddRelativeForce(0 , 1 , 0);                    //straight up in the air 
             //rb.AddRelativeForce(Vector3.up);                  //another way to write rb.AddRelativeForce(0,1,0);
-            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);                 //Time.deltaTime to make the thrust fps independent   
+            rb.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);    //Time.deltaTime to make the thrust fps independent
+            if(!audioSource.isPlaying){                 //if audio is not playing then play it    
+                audioSource.Play();                  //else is  not here as the sound has to stop when we're not thrusting so its outside 
+            }
+        
         }
+        else{
+                audioSource.Stop();                //stop as we're not thrusting
+            }
         
   
     }
