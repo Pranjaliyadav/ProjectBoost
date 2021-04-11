@@ -12,6 +12,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] ParticleSystem crashParticles;
     AudioSource audioSource;
     bool isTransitioning = false;
+    bool collisionDisabled = false;
 
 
     void Start() {
@@ -22,9 +23,23 @@ public class CollisionHandler : MonoBehaviour
 
     }
     
+    void Update() {
+        RespondToDebugKeys();
+    }
+
+    void RespondToDebugKeys(){
+
+        if(Input.GetKeyDown(KeyCode.L)){
+            LoadNextLevel();
+        }
+        else if(Input.GetKeyDown(KeyCode.C)){
+            collisionDisabled = !collisionDisabled;    //toggle collision
+        }
+    }
+    
     void OnCollisionEnter(Collision other) {
 
-        if(isTransitioning){return;}
+        if(isTransitioning || collisionDisabled){return;}
         
         else {
             switch(other.gameObject.tag){

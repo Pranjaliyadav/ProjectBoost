@@ -17,6 +17,20 @@ Pink particles are default when particle is not provided
 we use Modules for controlling behaviour
 make sure looping and play on awake is turned off in particle system
 
+oscillating platform
+how to move object using code backwards and forwards
+we need a starting position vector3 (x, y,z) and movement vector(x1,y1,z1) where moving .add x+x1
+movement factor is needed to go back and forth (0 to 1)
+offset = movement vector * movement factor
+Mathf.sin() is used for movement here
+
+two floats can vary by a tiny amount
+its unoredictable to use == with floats
+always specify the acceptable difference
+the smallest float is Mathf.Epsilon
+always compare to this rather than zero
+for example 
+if(period <= Math.Epsilon){return;}
 
 
 
