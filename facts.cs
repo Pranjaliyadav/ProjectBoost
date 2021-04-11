@@ -32,6 +32,25 @@ always compare to this rather than zero
 for example 
 if(period <= Math.Epsilon){return;}
 
+useful game design approach
+Design "moments" and then expand them into a level. Moment that use the environment:
+fly under
+fly over
+fly through a gap
+time your flight thru moving obstacle
+Land on moving platform
+fly through narrow tunnel
+
+moment that use tuning of our existing game:
+slower rocket(it got damaged)
+Faster rocket(got a boost)
+Darker level
+closer camera
+Bigger rocket(carrying something)
+
+
+
+
 
 
 
